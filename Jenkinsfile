@@ -34,16 +34,4 @@ node{
 	}
 }
     
-    stage('Build Image'){
-        sh 'docker build -t ashokit/mavenwebapp .'
-    }
     
-   
-    
-    stage('Deploy App'){
-        kubernetesDeploy(
-            configs: 'maven-web-app-deploy.yml',
-            kubeconfigId: 'Kube-Config'
-        )
-    }    
-}
