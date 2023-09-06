@@ -8,13 +8,17 @@ pipeline {
                     def mavenCMD = "${mavenHome}/bin/mvn"
                     sh "${mavenCMD} clean package"
                 }
+            }
+        }
         stage('SonarQube analysis') {       
-        withSonarQubeEnv('sonarscanner4') {
-       	sh "mvn sonar:sonar"    	
-    }
+            steps {
+                withSonarQubeEnv('sonarscanner4') {
+                    sh "mvn sonar:sonar"    	
+                }
             }
         }
     }
 }
+
 
     
