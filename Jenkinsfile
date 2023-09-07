@@ -42,7 +42,7 @@ pipeline {
                         artifacts: [
                             [artifactId: 'myproject', // Replace 'projectName' with your actual artifact ID
                              classifier: '',
-                             file: "my-service-${env.ARTVERSION}.war",
+                             file: "01-maven-web-app-${env.ARTVERSION}.war",
                              type: 'war']
                         ]
                     )
