@@ -40,13 +40,17 @@ pipeline {
                         repository: env.NEXUS_REPOSITORY,
                         credentialsId: env.NEXUS_CREDENTIAL_ID,
                         artifacts: [
-                            [artifactId: 'myproject', // Replace 'projectName' with your actual artifact ID
+                            [artifactId: 'myproject',
                              classifier: '',
                              file: "target/01-maven-web-app.war",
                              type: 'war']
                         ]
                     )
-                    post{
+                }
+            }
+        }
+    }
+    post {
         always {
             echo 'Slack Notifications'
             slackSend channel: 'jenkins-notifications',
@@ -54,9 +58,6 @@ pipeline {
                 message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
         }
     }
-                }
-            }
-        }
-    }
 }
+
 
