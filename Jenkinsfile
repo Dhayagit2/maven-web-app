@@ -50,14 +50,9 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            echo 'Slack Notifications'
-            slackSend channel: 'jenkins-notofications',
-                color: COLOR_MAP[currentBuild.currentResult],
-                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
-        }
-    }
+    stage (deploy)
+    sshagent(['sshdeploy']) {
+    sh 'scp - StrictHostKeyChecking=no target/01-maven-web-app.war ubuntu@54.206.150.178:/home/ubuntu/apache-tomcat-9.0.65/webapps 'I
 }
 
 
