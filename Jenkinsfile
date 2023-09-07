@@ -49,10 +49,16 @@ pipeline {
                 }
             }
         }
+        stage('Deploy') { // Added missing stage name 'Deploy'
+            steps {
+                script {
+                    sshagent(['sshdeploy']) {
+                        sh 'scp -o StrictHostKeyChecking=no target/01-maven-web-app.war ubuntu@54.206.150.178:/home/ubuntu/apache-tomcat-9.0.65/webapps'
+                    }
+                }
+            }
+        }
     }
-    stage (deploy)
-    sshagent(['sshdeploy']) {
-    sh 'scp - StrictHostKeyChecking=no target/01-maven-web-app.war ubuntu@54.206.150.178:/home/ubuntu/apache-tomcat-9.0.65/webapps 'I
 }
 
 
