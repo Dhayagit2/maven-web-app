@@ -32,9 +32,9 @@ pipeline {
                     ],
                     credentialsId: 'nexuslogin',
                     groupId: 'mynexusproject',
-                    nexusUrl: 'http://3.25.92.209:8081', // Added 'http://'
+                    nexusUrl: 'http://3.25.92.209:8081', 
                     protocol: 'http',
-                    repository: ' vprofile-snapshot',
+                    repository: 'vprofile-snapshot',
                     version: '1.0.0'
                 }
             }
