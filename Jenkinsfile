@@ -10,31 +10,34 @@ pipeline {
                 }
             }
         }
-        stage('SonarQube analysis') {       
+        stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('Sonar-Server-7.8') {
-                    sh "mvn sonar:sonar"    	
+                script {
+                    withSonarQubeEnv('Sonar-Server-7.8') {
+                        sh "mvn sonar:sonar"
+                    }
                 }
             }
         }
-        stage ( 'upload build artifact'){
+        stage('Upload Build Artifact') {
             steps {
-                nexusArtifactUploader artifacts: [	
-			[
-				artifactId: '01-maven-web-app',
-				classifier: '',
-				file: 'target/01-maven-web-app.war',
-				type: war		
-			]	
-		],
-		credentialsId: 'nexus3',
-		groupId: 'mynexusproject',
-		nexusUrl: '3.25.92.209:8081',
-		protocol: 'http',
-		repository: 'vprofile-release'
-        version: '1.0.0'
-      }
-   }
-}    
-	
-    
+                script {
+                    nexusArtifactUploader artifacts: [
+                        [
+                            artifactId: '01-maven-web-app',
+                            classifier: '',
+                            file: 'target/01-maven-web-app.war',
+                            type: 'war'
+                        ]
+                    ],
+                    credentialsId: 'nexus3',
+                    groupId: 'mynexusproject',
+                    nexusUrl: 'http://3.25.92.209:8081', // Added 'http://'
+                    protocol: 'http',
+                    repository: 'vprofile-release',
+                    version: '1.0.0'
+                }
+            }
+        }
+    }
+}
