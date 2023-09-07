@@ -18,8 +18,8 @@ pipeline {
             }
         }
         stage ( 'upload build artifact'){
-    }
-}
-    
+      }
+  }
+}    
 
     
