@@ -34,7 +34,7 @@ pipeline {
 		repository: 'vprofile-release'
         version: '1.0.0'
       }
-  }
+   }
 }    
-
+	
     
