@@ -30,7 +30,7 @@ pipeline {
                             type: 'war'
                         ]
                     ],
-                    credentialsId: 'nexus3',
+                    credentialsId: 'nexuslogin',
                     groupId: 'mynexusproject',
                     nexusUrl: 'http://3.25.92.209:8081', // Added 'http://'
                     protocol: 'http',
