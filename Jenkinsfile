@@ -34,7 +34,7 @@ pipeline {
                     groupId: 'com.mynexusproject',
                     nexusUrl: 'http://3.25.92.209:8081', 
                     protocol: 'http',
-                    repository: 'vprofile-snapshot',
+                    repository: 'vpro-maven-central',
                     version: '2.14'
                 }
             }
