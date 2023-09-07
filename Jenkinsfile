@@ -31,8 +31,8 @@ pipeline {
                         ]
                     ],
                     credentialsId: 'nexuslogin',
-                    groupId: 'com.mynexusproject',
-                    nexusUrl: 'http://3.25.92.209:8081', 
+                    groupId: 'in.ashokit',
+                    nexusUrl: '3.25.92.209:8081', 
                     protocol: 'http',
                     repository: 'vpro-maven-central',
                     version: '2.14'
