@@ -25,7 +25,7 @@ pipeline {
                     nexusArtifactUploader artifacts: [
                         [
                             artifactId: '01-maven-web-app',
-                            classifier: '',
+                            classifier: 'file',
                             file: 'target/01-maven-web-app.war',
                             type: 'war'
                         ]
